@@ -1,0 +1,14 @@
+header {
+    text-align: center;
+    font-size: 36px;
+}
+
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+    border: 5px solid black;
+    margin: 40px;
+}
