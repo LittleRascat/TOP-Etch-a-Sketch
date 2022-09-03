@@ -66,6 +66,7 @@ const clear = document.querySelector('.clear');
 clear.onclick = () => {
     removeAllChildren(grid);
     createGrid ();
+    color = 'black';
 }
 
 function randomInteger(max) {
@@ -75,7 +76,6 @@ function randomInteger(max) {
 const choose = document.querySelector('.choose');
 
 choose.onclick = () => {
-    const gridCells = document.querySelectorAll('p');
     color = prompt('Enter a color!');
 }
 
@@ -94,3 +94,40 @@ rainbow.onclick = () => {
     });
 }
 
+const darken = document.querySelector('.darken');
+
+darken.onclick = () => {
+    const gridCells = document.querySelectorAll('p');
+    gridCells.forEach((p) => {
+        let r = 255;
+        let g = 255;
+        let b = 255;
+        color = r+","+g+","+b;
+        p.addEventListener('mouseover', () => {
+            r = r-255*0.1;
+            g = g-255*0.1;
+            b = b-255*0.1;
+            color = r+","+g+","+b;
+            p.style.background = 'rgb('+color+')';
+        });
+    });
+}
+
+const lighten = document.querySelector('.lighten');
+
+lighten.onclick = () => {
+    const gridCells = document.querySelectorAll('p');
+    gridCells.forEach((p) => {
+        let r = 0;
+        let g = 0;
+        let b = 0;
+        color = r+","+g+","+b;
+        p.addEventListener('mouseover', () => {
+            r = r+255*0.1;
+            g = g+255*0.1;
+            b = b+255*0.1;
+            color = r+","+g+","+b;
+            p.style.background = 'rgb('+color+')';
+        });
+    });
+}
