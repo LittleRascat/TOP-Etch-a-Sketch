@@ -40,9 +40,10 @@ function removeAllChildren (parent) {
     }
 }
 
+
+
 function mouseoverFunction () {
     const gridCells = document.querySelectorAll('p');
-
     gridCells.forEach((p) => {
         p.addEventListener('mouseover', () => {
             p.style.background = 'black';
@@ -62,3 +63,21 @@ resize.onclick = () => {
     createGrid ();
 }
 
+function randomInteger(max) {
+    return Math.floor(Math.random()*(max + 1));
+}
+
+const rainbow = document.querySelector('.rainbow');
+
+rainbow.onclick = () => {
+    const gridCells = document.querySelectorAll('p');
+    gridCells.forEach((p) => {
+        p.addEventListener('mouseover', () => {
+            let r = randomInteger(255);
+            let g = randomInteger(255);
+            let b = randomInteger(255);
+            let color = r+","+g+","+b;
+            p.style.background = 'rgb('+color+')';
+        });
+    });
+}
