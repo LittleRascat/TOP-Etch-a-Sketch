@@ -1,4 +1,5 @@
 let gridSize = 16;
+let color = 'black';
 
 const grid = document.querySelector('.grid-container');
 
@@ -40,13 +41,11 @@ function removeAllChildren (parent) {
     }
 }
 
-
-
 function mouseoverFunction () {
     const gridCells = document.querySelectorAll('p');
     gridCells.forEach((p) => {
         p.addEventListener('mouseover', () => {
-            p.style.background = 'black';
+            p.style.background = ''+color+'';
         });
     });
 }
@@ -63,8 +62,21 @@ resize.onclick = () => {
     createGrid ();
 }
 
+const clear = document.querySelector('.clear');
+clear.onclick = () => {
+    removeAllChildren(grid);
+    createGrid ();
+}
+
 function randomInteger(max) {
     return Math.floor(Math.random()*(max + 1));
+}
+
+const choose = document.querySelector('.choose');
+
+choose.onclick = () => {
+    const gridCells = document.querySelectorAll('p');
+    color = prompt('Enter a color!');
 }
 
 const rainbow = document.querySelector('.rainbow');
@@ -76,8 +88,9 @@ rainbow.onclick = () => {
             let r = randomInteger(255);
             let g = randomInteger(255);
             let b = randomInteger(255);
-            let color = r+","+g+","+b;
+            color = r+","+g+","+b;
             p.style.background = 'rgb('+color+')';
         });
     });
 }
+
